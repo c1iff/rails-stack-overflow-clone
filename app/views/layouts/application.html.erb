@@ -15,6 +15,9 @@
     <% if flash[:alert]%>
       <%= flash[:alert] %>
     <% end %>
+    <% if current_user%>
+      <%= current_user.email %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
