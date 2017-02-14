@@ -1,5 +1,7 @@
 class User < ApplicationRecord
-  
+  has_many :questions
+  has_many :answers
+
   attr_accessor :password
   validates_confirmation_of :password
   validates :email, :presence => true
