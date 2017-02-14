@@ -12,12 +12,4 @@ describe "the add a new user process" do
     click_link "See Questions"
     expect(page).to have_content 'great'
   end
-
-  # it "gives error when form field is left blank" do
-  #   visit "/"
-  #   click_link "New-user"
-  #   click_on "Sign Up"
-  #   expect(page).to have_content "problem"
-  # end
-
 end
