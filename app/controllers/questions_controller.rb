@@ -1,9 +1,14 @@
 class QuestionsController < ApplicationController
-  def up_vote
-    @question = Question.find(params[:format])
-    @question.up_vote
+  def upvote
+    @question = Question.find(params[:id])
+    @question.upvote_by current_user
+    redirect_to :back
+  end
 
-    render :show
+  def downvote
+    @question = Question.find(params[:id])
+    @question.downvote_by current_user
+    redirect_to :back
   end
 
   def index

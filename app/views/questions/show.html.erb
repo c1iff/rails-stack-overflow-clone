@@ -1,13 +1,24 @@
 <h4> <%= @question.content %> </h4>
-<h4> <%= @question.rating %> </h4>
 <h4> <%= @question.user.email %> </h4>
-<%= link_to "Up Vote", up_vote_path(@question)  %>
+<h4> <%= time_ago_in_words(@question.created_at) %>  </h4>
+
+
+<%= link_to like_question_path(@question), method: :put do %>
+  Upvote
+  <%= @question.get_upvotes.size %>
+<% end %>
+<br>
+<%= link_to dislike_question_path(@question), method: :put do %>
+  Downvote
+  <%= @question.get_downvotes.size %>
+<% end %>
+
 <% if @question.answers %>
   <% @question.answers.each do |answer|  %>
     <p>
       <%= answer.content%>
       <%= answer.user.email %>
-      <%= answer.rating %>
+
     </p>
   <% end %>
 <% end %>
