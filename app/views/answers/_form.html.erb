@@ -1,0 +1,6 @@
+<%= form_for [@question, @answer] do |f| %>
+  <%= f.text_field :content, placeholder: "Enter Answer"%>
+  <%= f.text_field :question_id, type: 'hidden', value: @question.id %>
+  <%= f.text_field :user_id, type: 'hidden', value: current_user.id %>
+  <%= f.submit %>
+<% end %>
