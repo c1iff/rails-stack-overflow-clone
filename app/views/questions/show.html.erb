@@ -28,9 +28,15 @@
         Downvote
         <%= answer.get_downvotes.size %>
       <% end %>
+      <br>
+      <%= link_to "Edit Answer", edit_question_answer_path(@question, answer) %>
+      <br>
+      <%= link_to "Delete Answer", question_answer_path(@question, answer), :data => {:confirm => "Are you sure?", :method => "delete"} %>
     </p>
   <% end %>
 <% end %>
 <br>
 
+<%= link_to "Edit this question", edit_question_path(@question) %>
+<%= link_to "Delete this question", question_path(@question), :data => {:confirm => "Are you sure?", :method => "delete"} %>
 <%= link_to "Add an Answer", new_question_answer_path(@question) %>

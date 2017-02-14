@@ -1,4 +1,6 @@
 class QuestionsController < ApplicationController
+  before_filter :authorize, only: [:edit, :update, :destroy]
+
   def upvote
     @question = Question.find(params[:id])
     @question.upvote_by current_user
@@ -30,9 +32,28 @@ class QuestionsController < ApplicationController
       redirect_to :back
     end
   end
-  def update
+  def edit
+    @question = Question.find(params[:id])
+
   end
+  def update
+    @question = Question.find(params[:id])
+    if @question.update(question_params)
+      flash[:notice] = "Update Successful"
+      redirect_to questions_path
+    else
+      flash[:alert] = "Update Failed"
+      redirect_to :back
+    end
+  end
+
   def destroy
+    @question = Question.find(params[:id])
+    @question.answers.each do |answer|
+      answer.destroy
+    end
+    @question.destroy
+    redirect_to questions_path
   end
   private
     def question_params
