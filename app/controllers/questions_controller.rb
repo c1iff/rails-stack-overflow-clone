@@ -1,4 +1,11 @@
 class QuestionsController < ApplicationController
+  def up_vote
+    @question = Question.find(params[:format])
+    @question.up_vote
+
+    render :show
+  end
+
   def index
     @questions = Question.all
   end

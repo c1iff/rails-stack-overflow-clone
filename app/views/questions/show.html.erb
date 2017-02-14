@@ -1,6 +1,7 @@
 <h4> <%= @question.content %> </h4>
 <h4> <%= @question.rating %> </h4>
 <h4> <%= @question.user.email %> </h4>
+<%= link_to "Up Vote", up_vote_path(@question)  %>
 <% if @question.answers %>
   <% @question.answers.each do |answer|  %>
     <p>
@@ -11,4 +12,5 @@
   <% end %>
 <% end %>
 <br>
+
 <%= link_to "Add an Answer", new_question_answer_path(@question) %>
