@@ -28,7 +28,6 @@
         Downvote
         <%= answer.get_downvotes.size %>
       <% end %>
-      <%= answer.votes_for.size %>
       <br>
       <%= link_to "Edit Answer", edit_question_answer_path(@question, answer) %>
       <br>

@@ -20,7 +20,7 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     @answers_un = @question.answers
 
-    @answers = @answers_un.sort{ |a, b| b.votes_for.size <=> a.votes_for.size}
+    @answers = @answers_un.sort{ |a, b| b.get_upvotes.size <=> a.get_upvotes.size}
   end
   def new
     @question = Question.new
