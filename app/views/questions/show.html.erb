@@ -13,8 +13,8 @@
   <%= @question.get_downvotes.size %>
 <% end %>
 
-<% if @question.answers %>
-  <% @question.answers.each do |answer|  %>
+<% if @answers %>
+  <% @answers.each do |answer|  %>
     <p>
       <%= answer.content%>
       <%= answer.user.email %>
@@ -28,6 +28,7 @@
         Downvote
         <%= answer.get_downvotes.size %>
       <% end %>
+      <%= answer.votes_for.size %>
       <br>
       <%= link_to "Edit Answer", edit_question_answer_path(@question, answer) %>
       <br>

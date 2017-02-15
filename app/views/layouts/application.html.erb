@@ -9,15 +9,29 @@
   </head>
 
   <body>
-    <% if flash[:notice]%>
+    <nav>
+      <div class="container">
+        <div class="nav-wrapper">
+          <a href="/" class="brand-logo">Stack-Overflow</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="/questions">Questions</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+    <div class="container">
+      <% if flash[:notice]%>
       <%= flash[:notice] %>
-    <% end %>
-    <% if flash[:alert]%>
+      <% end %>
+      <% if flash[:alert]%>
       <%= flash[:alert] %>
-    <% end %>
-    <% if current_user%>
+      <% end %>
+      <% if current_user%>
       <%= current_user.email %>
-    <% end %>
-    <%= yield %>
+      <% end %>
+      <%= yield %>
+
+    </div>
   </body>
 </html>

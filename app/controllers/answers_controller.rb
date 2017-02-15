@@ -12,7 +12,6 @@ class AnswersController < ApplicationController
     @answer.downvote_by current_user
     redirect_to :back
   end
-
   def new
     @question = Question.find(params[:question_id])
     @answer = Answer.new

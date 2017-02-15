@@ -14,10 +14,13 @@ class QuestionsController < ApplicationController
   end
 
   def index
-    @questions = Question.all
+    @questions = Question.all.order('created_at')
   end
   def show
     @question = Question.find(params[:id])
+    @answers_un = @question.answers
+
+    @answers = @answers_un.sort{ |a, b| b.votes_for.size <=> a.votes_for.size}
   end
   def new
     @question = Question.new
